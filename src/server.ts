@@ -15,18 +15,6 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
-
-/**
  * Serve static files from /browser
  */
 app.use(
@@ -34,8 +22,13 @@ app.use(
     maxAge: '1y',
     index: false,
     redirect: false,
-  }),
+  })
 );
+
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error('Error serving static files:', err);
+  res.status(500).send('Error serving static files');
+});
 
 /**
  * Handle all other requests by rendering the Angular application.
@@ -46,12 +39,14 @@ app.use('/**', (req, res, next) => {
     .then((response) =>
       response ? writeResponseToNodeResponse(response, res) : next(),
     )
-    .catch(next);
+    .catch((err) => {
+      console.error('Error rendering Angular application:', err);
+      res.status(500).send('Error rendering Angular application');
+    });
 });
 
 /**
  * Start the server if this module is the main entry point.
- * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
 if (isMainModule(import.meta.url)) {
   const port = process.env['PORT'] || 4000;

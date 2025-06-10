@@ -3,10 +3,9 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [RouterOutlet], // Importa RouterOutlet para el routing
+  template: '<router-outlet></router-outlet>',
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'db-management-system';
-}
+export class AppComponent {}

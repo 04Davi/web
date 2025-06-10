@@ -1,0 +1,58 @@
+<div>
+  <h2 class="ui dividing header">Datos de Tabla</h2>
+  <form [formGroup]="tableForm" (ngSubmit)="createTable()">
+    <table class="ui tiny table">
+      <thead>
+        <tr>
+          <th class="two wide text-center">Tabla</th>
+          <th class="three wide">
+            <input type="text" formControlName="schema" [disabled]="true" class="ui input fluid">
+          </th>
+          <th>
+            <input type="text" formControlName="tableName" placeholder="Nombre de Tabla..." class="ui input fluid">
+          </th>
+        </tr>
+      </thead>
+    </table>
+    <h2 class="ui dividing header">Estructura de Tabla</h2>
+    <table class="ui tiny table">
+      <thead>
+        <tr>
+          <th>PK</th>
+          <th>UQ</th>
+          <th>Nombre Columna</th>
+          <th>Tipo Dato</th>
+          <th>NULL</th>
+          <th>Auto-Inc.</th>
+          <th>Semilla</th>
+          <th>Tabla</th>
+          <th>Columna</th>
+        </tr>
+      </thead>
+      <tbody formArrayName="columns">
+        <tr *ngFor="let col of columns.controls; let i = index" [formGroupName]="i">
+          <td><input type="checkbox" formControlName="pk"></td>
+          <td><input type="checkbox" formControlName="uq"></td>
+          <td><input type="text" formControlName="name" class="ui input" placeholder="Nombre de columna..."></td>
+          <td>
+            <select formControlName="dataType" class="ui dropdown fluid">
+              <option *ngFor="let dt of dataTypes" [value]="dt.dataTypeId">{{dt.dataTypeName}}</option>
+            </select>
+          </td>
+          <td><input type="checkbox" formControlName="isNullable"></td>
+          <td><input type="checkbox" formControlName="isAutoIncrement"></td>
+          <td><input type="text" formControlName="seed" class="ui input"></td>
+          <td>
+            <select formControlName="fkTable" class="ui dropdown fluid">
+              <option *ngFor="let t of tables" [value]="t.objectId">{{t.schema}}.{{t.objectName}}</option>
+            </select>
+          </td>
+          <td><input type="text" formControlName="fkColumn" class="ui input"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" (click)="addRow()" class="ui blue button">Agregar fila</button>
+    <button type="submit" class="ui green button">Guardar</button>
+  </form>
+  <div *ngIf="errorMessage" class="text-red-500 mt-2">{{ errorMessage }}</div>
+</div>

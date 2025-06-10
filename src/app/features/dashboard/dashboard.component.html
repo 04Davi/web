@@ -1,0 +1,17 @@
+<div class="max-w-7xl mx-auto">
+    <div class="bg-white p-8 rounded-lg shadow-lg">
+      <h2 class="text-3xl font-bold text-primary mb-6">Database Dashboard</h2>
+      <div class="mb-6">
+        <label class="text-sm font-medium text-gray-700 mr-4">Database Type</label>
+        <select [(ngModel)]="dbType" (change)="switchDbType(dbType)" class="border rounded-lg p-2">
+          <option value="mssql">Microsoft SQL Server</option>
+          <option value="mysql">MySQL</option>
+        </select>
+      </div>
+      <p class="text-gray-600 mb-6">Manage your database with ease. Create tables, define relationships, or execute SQL queries using the sidebar navigation.</p>
+      <div *ngIf="metadata" class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-primary mb-4">Metadata Overview</h3>
+        <pre class="bg-white p-4 rounded-lg shadow-inner text-sm">{{ metadata | json }}</pre>
+      </div>
+    </div>
+  </div>

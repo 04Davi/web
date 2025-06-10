@@ -1,0 +1,208 @@
+/* Estilos base */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  
+  .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, #f3f4f6, #d1d5db);
+  }
+  
+  .flex.items-center.justify-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .bg-white {
+    background-color: #ffffff;
+  }
+  
+  .p-8 {
+    padding: 2rem;
+  }
+  
+  .rounded-xl {
+    border-radius: 0.75rem;
+  }
+  
+  .shadow-2xl {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .transform.transition-all.duration-300:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+  
+  .hover\:shadow-3xl:hover {
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Estilos del encabezado */
+  .text-center.mb-6 h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .text-4xl {
+    font-size: 2.25rem;
+  }
+  
+  .font-bold {
+    font-weight: 700;
+  }
+  
+  .text-blue-700 {
+    color: #1e40af;
+  }
+  
+  .text-gray-600 {
+    color: #4b5563;
+  }
+  
+  /* Estilos del formulario */
+  .space-y-6 > * + * {
+    margin-top: 1.5rem;
+  }
+  
+  .field label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .text-gray-700 {
+    color: #374151;
+  }
+  
+  .ui.left.labeled.input {
+    position: relative;
+  }
+  
+  .ui.basic.icon.label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+    background: #f9fafb;
+    border-right: 1px solid #e5e7eb;
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+  }
+  
+  .ui.dropdown.fluid {
+    width: 100%;
+    padding-left: 2.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    appearance: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 0.5rem center/1em 1em;
+  }
+  
+  .ui.dropdown.fluid:focus {
+    outline: none;
+    border-color: #1e40af;
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+  }
+  
+  /* Estilos del mensaje de error */
+  .text-red-500 {
+    color: #ef4444;
+  }
+  
+  .bg-red-100 {
+    background-color: #fee2e2;
+  }
+  
+  .p-2 {
+    padding: 0.5rem;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  /* Estilos del botón */
+  .ui.fluid.large.button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+  }
+  
+  .bg-blue-600 {
+    background-color: #2563eb;
+  }
+  
+  .text-white {
+    color: #ffffff;
+  }
+  
+  .font-semibold {
+    font-weight: 600;
+  }
+  
+  .py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .hover\:bg-blue-700:hover {
+    background-color: #1e40af;
+  }
+  
+  .transition-colors.duration-200 {
+    transition: background-color 0.2s ease;
+  }
+  
+  .opacity-50 {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  /* Indicador de carga */
+  .spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #ffffff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Estilos del pie de página */
+  .text-center.mt-4 p {
+    margin-top: 1rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .text-gray-500 {
+    color: #6b7280;
+  }

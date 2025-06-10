@@ -1,10 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      declarations: [
+        AppComponent, // Declarar el componente principal
+        SidebarComponent, // Declarar SidebarComponent
+        HeaderComponent // Declarar HeaderComponent
+      ],
+      imports: [
+        RouterTestingModule // Importar RouterTestingModule para simular enrutamiento
+      ],
     }).compileComponents();
   });
 
@@ -20,10 +30,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('db-management-system');
   });
 
-  it('should render title', () => {
+  it('should render sidebar and header', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, db-management-system');
+    expect(compiled.querySelector('app-sidebar')).toBeTruthy();
+    expect(compiled.querySelector('app-header')).toBeTruthy();
   });
 });
