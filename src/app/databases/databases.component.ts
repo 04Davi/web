@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./databases.component.css']
 })
 export class DatabasesComponent implements OnInit {
-  databases: string[] = [];
+  databases: { objectId: string; schema: string; objectName: string; objectTypeId: number }[] = [];
   errorMessage: string = '';
   server: string = localStorage.getItem('last_server') || '';
 
@@ -21,7 +21,13 @@ export class DatabasesComponent implements OnInit {
       this.errorMessage = 'No se ha seleccionado un servidor.';
       return;
     }
-    this.loadDatabases();
+    // Cargar datos desde localStorage
+    const serverData = localStorage.getItem('server_data');
+    if (serverData) {
+      this.databases = JSON.parse(serverData);
+    } else {
+      this.loadDatabases();
+    }
   }
 
   loadDatabases() {
@@ -29,14 +35,15 @@ export class DatabasesComponent implements OnInit {
       .subscribe({
         next: (response) => {
           if (response.success) {
-            // Filtramos para mostrar solo bases de datos (type 'D')
-            this.databases = response.data.filter((item: any) => item.objectTypeId === 1002).map((item: any) => item.objectName);
+            this.databases = response.data;
+            localStorage.setItem('server_data', JSON.stringify(response.data)); // Guardar para futuras referencias
           } else {
             this.errorMessage = response.message;
           }
         },
         error: (err) => {
           this.errorMessage = 'Error al cargar las bases de datos';
+          console.error('Error detallado:', err);
         }
       });
   }
@@ -44,6 +51,7 @@ export class DatabasesComponent implements OnInit {
   disconnect() {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('last_server');
+    localStorage.removeItem('server_data');
     this.router.navigate(['/login']);
   }
 }

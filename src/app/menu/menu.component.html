@@ -1,0 +1,42 @@
+<div class="ui container">
+    <div class="ui header dividing p-2 bg-teal-700 text-white flex justify-between items-center">
+      <div>
+        <i class="server icon"></i> Servidor: {{ serverName }}
+      </div>
+      <div>
+        <button class="ui button basic teal" (click)="createDatabase()">Nueva Base de Datos</button>
+        <button class="ui button basic red" (click)="disconnect()">Desconectar</button>
+      </div>
+    </div>
+    <div class="ui list p-2" id="frm-server-objects-menu">
+      <div *ngIf="isLoading" class="text-center p-4">
+        <i class="spinner loading icon"></i> Cargando...
+      </div>
+      <div *ngIf="errorMessage" class="ui negative message">
+        {{ errorMessage }}
+      </div>
+      <div *ngFor="let db of databases">
+        <div class="item" (click)="toggleContent(db)">
+          <i [class]="db.loadingObjects ? 'spinner loading icon' : (db.expanded ? 'minus' : 'plus') + ' teal icon'"></i>
+          <i class="database icon"></i>
+          <div class="content">
+            <div class="header">{{ db.objectName }}</div>
+            <div class="list" *ngIf="db.expanded">
+              <div *ngIf="db.loadingObjects" class="text-center p-2">
+                <i class="spinner loading icon"></i> Cargando objetos...
+              </div>
+              <div *ngIf="!db.loadingObjects && db.objects.length === 0" class="text-gray-500 p-2">
+                No hay objetos disponibles.
+              </div>
+              <div *ngFor="let obj of db.objects" class="item">
+                <i [class]="obj.icon"></i>
+                <div class="content">
+                  <div class="description">{{ obj.name }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

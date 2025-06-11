@@ -15,5 +15,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  username = 'David Murillo'; // Esto se puede obtener del login response
+  username = 'DESKTOP-7B84G8T'; // Esto se puede obtener del login response
 }

@@ -1,0 +1,101 @@
+.ui.container {
+    max-width: 300px;
+    margin: 0 auto;
+    padding-top: 1rem;
+  }
+  
+  .ui.header.dividing {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .p-2 {
+    padding: 0.5rem;
+  }
+  
+  .bg-teal-700 {
+    background-color: #2c7a7b;
+  }
+  
+  .text-white {
+    color: #ffffff;
+  }
+  
+  .flex.justify-between.items-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ui.button.basic.teal {
+    background: none;
+    color: #2c7a7b;
+    border: 1px solid #2c7a7b;
+    margin-right: 0.5rem;
+  }
+  
+  .ui.button.basic.teal:hover {
+    background-color: #2c7a7b;
+    color: #ffffff;
+  }
+  
+  .ui.button.basic.red {
+    background: none;
+    color: #db2828;
+    border: 1px solid #db2828;
+  }
+  
+  .ui.button.basic.red:hover {
+    background-color: #db2828;
+    color: #ffffff;
+  }
+  
+  .ui.list .item {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .ui.list .item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .ui.list .content .header {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .ui.list .content .list {
+    padding-left: 1.5rem;
+  }
+  
+  .ui.list .content .description {
+    color: #666;
+  }
+  
+  .text-center.p-4 {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .text-gray-500.p-2 {
+    color: #666;
+    padding: 0.5rem;
+  }
+  
+  .ui.negative.message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .spinner.loading.icon {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
